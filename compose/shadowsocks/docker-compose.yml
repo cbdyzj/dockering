@@ -1,0 +1,19 @@
+version: '3'
+services:
+  shadowsocks:
+    image: mritd/shadowsocks
+    container_name: shadowsocks
+    ports:
+    - '6443:6443'
+    - '6500:6500/udp'
+    command: [
+      "-m", "ss-server",
+      "-s" ,"-s 0.0.0.0 -p 6443 -m chacha20-ietf-poly1305 -k password --fast-open",
+      "-x" ,
+      "-e", "kcpserver",
+      "-k", "-t 127.0.0.1:6443 -l :6500 -mode fast2"
+    ]
+networks:
+  default:
+    external:
+      name: docker-network

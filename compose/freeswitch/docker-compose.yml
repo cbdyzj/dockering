@@ -1,0 +1,19 @@
+version: '3'
+services:
+  freeswitch:
+    image: bettervoice/freeswitch-container:1.6.6
+    container_name: freeswitch
+    restart: on-failure
+    ports:
+    - '5060:5060/tcp'
+    - '5060:5060/udp'
+    - '5080:5080/tcp'
+    - '5080:5080/udp'
+    - '8021:8021/tcp'
+    - '7443:7443/tcp'
+    - '60535-65535:60535-65535/udp'
+networks:
+  default:
+    external:
+      name: docker-network
+      

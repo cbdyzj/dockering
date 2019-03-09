@@ -1,0 +1,65 @@
+version: '3'
+services:
+
+  redis:
+    image: redis
+    container_name: sentry_redis
+    networks:
+    - network
+
+  postgres:
+    image: postgres
+    container_name: sentry_postgres
+    environment:
+    - POSTGRES_USER=sentry
+    - POSTGRES_PASSWORD=sentry
+    volumes:
+    - pg-data:/var/lib/postgresql/data:rw
+    networks:
+    - network
+
+  sentry:
+    image: sentry
+    container_name: sentry
+    ports:
+    - '5000:9000'
+    environment:
+    - SENTRY_REDIS_HOST=redis
+    - SENTRY_POSTGRES_HOST=postgres
+    - SENTRY_SECRET_KEY=${SECRET_KEY}
+    depends_on:
+    - redis
+    - postgres
+    networks:
+    - network
+
+  sentry_celery_beat:
+    image: sentry
+    container_name: sentry_celery_beat
+    depends_on:
+    - sentry
+    environment:
+    - SENTRY_REDIS_HOST=redis
+    - SENTRY_POSTGRES_HOST=postgres
+    - SENTRY_SECRET_KEY=${SECRET_KEY}
+    command: "sentry run cron"
+    networks:
+    - network
+
+  sentry_celery_worker:
+    image: sentry
+    container_name: sentry_celery_worker
+    depends_on:
+    - sentry
+    environment:
+    - SENTRY_REDIS_HOST=redis
+    - SENTRY_POSTGRES_HOST=postgres
+    - SENTRY_SECRET_KEY=${SECRET_KEY}
+    command: "sentry run worker"
+    networks:
+    - network
+
+volumes:
+  pg-data:
+networks:
+  network:

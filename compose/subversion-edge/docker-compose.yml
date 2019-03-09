@@ -1,0 +1,14 @@
+version: '3'
+services:
+  subversion_edge:
+    image: mamohr/subversion-edge
+    container_name: subversion-edge
+    restart: on-failure
+    ports:
+    - '3343:3343'
+    - '4434:4434'
+    - '18080:18080'
+    volumes:
+    - data:/opt/csvn/data
+volumes:
+  data:

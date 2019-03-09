@@ -1,0 +1,15 @@
+version: '3'
+services:
+  nextcloud:
+    image: nextcloud
+    container_name: nextcloud
+    ports:
+    - '7435:80'
+    volumes:
+    - data:/var/www/html
+volumes:
+  data:
+networks:
+  default:
+    external:
+      name: docker-network

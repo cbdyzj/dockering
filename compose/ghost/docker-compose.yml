@@ -1,0 +1,17 @@
+version: '3'
+services:
+  ghost:
+    image: ghost
+    container_name: ghost
+    ports:
+    - '2368:2368'
+    volumes:
+    - data:/var/lib/ghost/content
+    environment:
+      url: http://localhost:2368
+volumes:
+  data:
+networks:
+  default:
+    external:
+      name: docker-network

@@ -1,0 +1,15 @@
+version: '3'
+services:
+  registry:
+    image: registry
+    container_name: registry
+    ports:
+    - '5000:5000'
+    volumes:
+    - data:/var/lib/registry
+volumes:
+  data:
+networks:
+  default:
+    external:
+      name: docker-network

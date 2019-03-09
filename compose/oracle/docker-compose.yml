@@ -1,0 +1,17 @@
+version: '3'
+services:
+  mysql:
+    image: alexeiled/docker-oracle-xe-11g
+    container_name: oracle
+    restart: on-failure
+    ports:
+    - '1521:1521'
+    - '8080:8080'
+    volumes:
+    - data:/usr/lib/oracle/xe/oradata/XE
+volumes:
+  data:
+networks:
+  default:
+    external:
+      name: docker-network

@@ -1,0 +1,30 @@
+version: '3'
+services:
+
+  postgres:
+    image: postgres
+    container_name: odoo_postgres
+    environment:
+    - POSTGRES_USER=odoo
+    - POSTGRES_PASSWORD=odoo
+    volumes:
+    - pg_data:/var/lib/postgresql/data:rw
+    networks:
+    - network
+
+  odoo:
+    image: odoo
+    container_name: odoo
+    ports:
+    - '8069:8069'
+    environment:
+    - HOST=postgres
+    depends_on:
+    - postgres
+    networks:
+    - network
+
+volumes:
+  pg_data:
+networks:
+  network:

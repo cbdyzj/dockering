@@ -1,0 +1,19 @@
+version: '3'
+services:
+  minio:
+    image: minio/minio
+    container_name: minio
+    volumes:
+    - data:/data
+    ports:
+    - '9000:9000'
+    environment:
+      MINIO_ACCESS_KEY: access_key
+      MINIO_SECRET_KEY: secret_key
+    command: server /data
+volumes:
+  data:
+networks:
+  default:
+    external:
+      name: docker-network

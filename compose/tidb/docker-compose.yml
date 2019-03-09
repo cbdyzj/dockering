@@ -1,0 +1,17 @@
+version: '3'
+services:
+  tidb:
+    image: pingcap/tidb
+    container_name: tidb_server
+    restart: on-failure
+    ports:
+    - '4000:4000'
+    - '10080:10080'
+    volumes:
+    - data:/data
+volumes:
+  data:
+networks:
+  default:
+    external:
+      name: docker-network

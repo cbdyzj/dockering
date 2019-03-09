@@ -1,0 +1,15 @@
+version: '3'
+services:
+  java:
+    image: openjdk:10.0.1
+    container_name: java
+    ports:
+    - '8000:8000'
+    working_dir: /usr/src/application
+    volumes:
+    - .:/usr/src/application
+    command: ["java", "-jar", "application.jar"]
+networks:
+  default:
+    external:
+      name: docker-network
