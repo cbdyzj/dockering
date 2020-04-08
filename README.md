@@ -31,7 +31,7 @@ docker update --restart=always rabbitmq # Update restart strategy
 - Using Docker for Mac, Linux virtual machine tty
 
 ```
-~/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/tty
+~/Library/Containers/com.docker.docker/Data/vms/0/tty
 ```
 
 ## Linux
