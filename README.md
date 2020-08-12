@@ -21,9 +21,12 @@
 ## Usage
 
 ```sh
-docker network create docker-network # Using single network
-docker rmi $(docker images -qf dangling=true) # Remove dangling images
-docker update --restart=always rabbitmq # Update restart strategy
+# Using single network
+docker network create docker-network
+# Remove dangling images
+docker rmi $(docker images -qf dangling=true)
+# Update restart strategy
+docker update --restart=always rabbitmq
 ```
 
 ## MacOS
