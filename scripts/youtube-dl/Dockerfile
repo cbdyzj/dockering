@@ -10,9 +10,9 @@ RUN set -xe \
     && apk add --no-cache ca-certificates \
                           ffmpeg \
                           openssl \
-                          python3 \
+                          py3-pip \
                           aria2 \
-    && pip3 install youtube-dl
+    && pip install youtube-dl
 
 # Try to run it so we know it works
 RUN youtube-dl --version
