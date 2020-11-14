@@ -3,7 +3,7 @@
 #
 
 FROM alpine
-MAINTAINER kev <cbdyzj@jianzhao.org>
+MAINTAINER cbdyzj <cbdyzj@jianzhao.org>
 
 RUN set -xe \
     && apk add --no-cache ca-certificates \
