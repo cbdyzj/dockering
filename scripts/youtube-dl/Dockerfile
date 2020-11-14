@@ -2,7 +2,8 @@
 # Dockerfile for youtube-dl
 #
 
-FROM alpine
+FROM alpine:3.12.1
+
 MAINTAINER cbdyzj <cbdyzj@jianzhao.org>
 
 RUN set -xe \
