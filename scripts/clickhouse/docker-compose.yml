@@ -1,0 +1,14 @@
+version: '3'
+services:
+  mysql:
+    image: yandex/clickhouse-server:20.8.7.15
+    container_name: clickhouse
+    ports:
+    - '8123:8123'
+    - '9000:9000'
+    environment:
+    - MYSQL_ROOT_PASSWORD=password
+    volumes:
+    - data:/var/lib/clickhouse
+volumes:
+  data:
