@@ -49,7 +49,7 @@ sudo usermod -aG docker $USER
 - Install
 
 ```
-https://docs.docker.com/install/linux/docker-ce/centos
+https://docs.docker.com/engine/install/debian/
 https://docs.docker.com/compose/install
 https://download.docker.com/linux/centos/7/x86_64/stable/Packages
 ```
