@@ -1,4 +1,4 @@
-# Docker
+# Dockering
 
 ## How
 
@@ -29,18 +29,9 @@ docker rmi $(docker images -qf dangling=true)
 docker update --restart=always rabbitmq
 ```
 
-## MacOS
-
-- Using Docker for Mac, Linux virtual machine tty
-
-```
-~/Library/Containers/com.docker.docker/Data/vms/0/tty
-```
-
 ## Linux
 
 - Add user to docker group
-
 
 ```sh
 sudo usermod -aG docker $USER
@@ -50,6 +41,10 @@ sudo usermod -aG docker $USER
 
 ```
 https://docs.docker.com/engine/install/debian/
+https://docs.docker.com/engine/install/ubuntu/
 https://docs.docker.com/compose/install
-https://download.docker.com/linux/centos/7/x86_64/stable/Packages
 ```
+
+## MacOS
+
+- Using Docker for Mac, Linux virtual machine tty
