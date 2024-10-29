@@ -29,6 +29,13 @@ docker rmi $(docker images -qf dangling=true)
 docker update --restart=always rabbitmq
 ```
 
+## Registries
+
+- public.ecr.aws
+- gcr.io
+- ghcr.io
+- quay.io
+
 ## Linux
 
 - Add user to docker group
@@ -40,9 +47,7 @@ sudo usermod -aG docker $USER
 - Install
 
 ```
-https://docs.docker.com/engine/install/debian/
 https://docs.docker.com/engine/install/ubuntu/
-https://docs.docker.com/compose/install
 ```
 
 ## MacOS
