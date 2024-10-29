@@ -1,0 +1,29 @@
+services:
+  app:
+    image: public.ecr.aws/docker/library/ghost:5-alpine
+    restart: always
+    container_name: ghost-app
+    ports:
+      - '127.0.0.1:2368:2368'
+    volumes:
+      - ./volumes/ghost:/var/lib/ghost/content
+    environment:
+      url: http://localhost:2368
+      database__client: mysql
+      database__connection__host: db
+      database__connection__user: root
+      database__connection__password: password
+      database__connection__database: ghost
+    depends_on:
+      db:
+        condition: service_started
+  db:
+    image: public.ecr.aws/docker/library/mysql:8
+    restart: always
+    container_name: ghost-db
+    ports:
+      - '127.0.0.1:3306:3306'
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+    volumes:
+      - ./volumes/db:/var/lib/mysql
